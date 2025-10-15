@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kite Docs Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0056b3;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    .options label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 20px;
+      background: #0056b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003f8a;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Kite Docs — 10 Question Quiz</h2>
+    <form id="quizForm"></form>
+    <button type="button" onclick="submitQuiz()">Submit Answers</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "1. What is the primary purpose of Kite?",
+        options: [
+          "A. A DeFi protocol for yield farming",
+          "B. An EVM-compatible blockchain for AI and the agentic internet",
+          "C. A centralized cloud service for AI model hosting",
+          "D. A framework for mobile app development"
+        ],
+        answer: "1"
+      },
+      {
+        question: "2. Which of the following is NOT one of the three core challenges Kite aims to solve?",
+        options: [
+          "A. Agent Native Identity & Auth",
+          "B. Agent Native Governance",
+          "C. Agent Native Payments",
+          "D. Agent Native Storage"
+        ],
+        answer: "3"
+      },
+      {
+        question: "3. What is meant by “Agent Native Identity & Auth” in Kite’s architecture?",
+        options: [
+          "A. Agents using biometric login only",
+          "B. Agents share a centralized identity used across all apps, with cryptographic lineage",
+          "C. Agents must re-register login credentials for each service",
+          "D. Identity is not required for agents"
+        ],
+        answer: "1"
+      },
+      {
+        question: "4. Which consensus or infrastructure feature is uniquely integrated in Kite?",
+        options: [
+          "A. Proof of Work (PoW)",
+          "B. Delegated Proof of Stake (DPoS)",
+          "C. Proof of AI attribution and rewards",
+          "D. Proof of History"
+        ],
+        answer: "2"
+      },
+      {
+        question: "5. What does it mean for Kite to be “modular” in its architecture?",
+        options: [
+          "A. Every component is locked and inseparable",
+          "B. Components can be adopted independently or together",
+          "C. It only supports one fixed stack",
+          "D. Modules are only for UI components"
+        ],
+        answer: "1"
+      },
+      {
+        question: "6. What kind of payments does Kite aim to support for machine-to-machine interactions?",
+        options: [
+          "A. Traditional fiat bank transfers",
+          "B. High-fee transactions",
+          "C. Instant, stablecoin-native micropayments with near-zero fees",
+          "D. Only monthly settlements"
+        ],
+        answer: "2"
+      },
+      {
+        question: "7. Who is the target audience of Kite?",
+        options: [
+          "A. Only blockchain infrastructure developers",
+          "B. Only AI researchers",
+          "C. Both AI users/researchers and blockchain developers",
+          "D. Only end users without development needs"
+        ],
+        answer: "2"
+      },
+      {
+        question: "8. Which of these is NOT a sample dApp listed in Kite’s docs?",
+        options: [
+          "A. Counter dApp",
+          "B. Voting dApp",
+          "C. Token Minter",
+          "D. Decentralized Exchange (DEX)"
+        ],
+        answer: "3"
+      },
+      {
+        question: "9. What is “account abstraction” in the context of Kite’s advanced topics?",
+        options: [
+          "A. Removing accounts entirely",
+          "B. Letting wallets or agents manage logic like gas payments behind the scenes",
+          "C. Requiring manual gas payments by end users always",
+          "D. Disallowing programmable permissions"
+        ],
+        answer: "1"
+      },
+      {
+        question: "10. Why might developers choose to build on Kite instead of a general L1 blockchain?",
+        options: [
+          "A. Because Kite does not support smart contracts",
+          "B. To leverage AI-optimized infrastructure, agent identity, and integrated tooling",
+          "C. Because general L1 blockchains have no community",
+          "D. To avoid modularity"
+        ],
+        answer: "1"
+      }
+    ];
+
+    const quizForm = document.getElementById("quizForm");
+    quizData.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `
+        <p>${q.question}</p>
+        <div class="options">
+          ${q.options
+            .map(
+              (opt, i) =>
+                <label><input type="radio" name="q${index}" value="${opt.charAt(0)}"> ${opt}</label>
+            )
+            .join("")}
+        </div>
+      `;
+      quizForm.appendChild(div);
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      quizData.forEach((q, i) => {
+        const selected = document.querySelector(input[name="q${i}"]:checked);
+        if (selected && selected.value === q.answer) score++;
+      });
+      document.getElementById("result").innerText = You scored ${score} / ${quizData.length}!;
+    }
+  </script>
+</body>
+</html>
